@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Search from './Components/Search.jsx'
 import Spinner from './Components/Spinner.jsx';
+import MovieCard from './Components/MovieCard.jsx';
 
 
 // API configuration
@@ -90,7 +91,8 @@ function App() {
                   : (
                     <ul>
                       {movieList.map((movie) => (
-                        <p key={movie.id} className='text-white'>{movie.title}</p>
+                        
+                        <MovieCard key={movie.id} movie={movie}/>
                       ))}
                     </ul>
 
