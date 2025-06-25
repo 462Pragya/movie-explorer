@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-
+import {useDebounce } from 'react-use';
+// Importing styles and components
 
 import './App.css'
 import Search from './Components/Search.jsx'
@@ -25,13 +26,22 @@ function App() {
   const [errorMessage, setErrorMessage] = useState('');
   const [movieList, setMovieList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [debouncedSearchTerm, setDebounceSearchTerm] = useDebounce('');
+   // Debounce the search term for 500ms to prevent excessive API calls
+  // This will update the debouncedSearchTerm after 500ms of inactivity
+
+  useDebounce(() => {
+    setDebounceSearchTerm(searchTerm);
+  }, 500, [debouncedSearchTerm]);
 
 
-  const fetchMovies = async (searchTerm) => {
+  const fetchMovies = async (query = '') => {
     setIsLoading(true);
     setErrorMessage('');
     try {
-      const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+      const endpoint = query ?  
+     `${API_BASE_URL}/search/movie?query=${encodeURI(query)} `
+      : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
 
       const response = await fetch(endpoint, API_OPTIONS);
       if (!response.ok) {
@@ -59,9 +69,9 @@ function App() {
   }
   useEffect(() => {
 
-    fetchMovies();
+    fetchMovies(debouncedSearchTerm);
 
-  }, []);
+  }, [debouncedSearchTerm]);
 
 
 
@@ -85,14 +95,14 @@ function App() {
                 (
                   <Spinner />
                 )
-                 : errorMessage ?
+                : errorMessage ?
                   (<p className='text-red-500'>{errorMessage}</p>)
-                   
+
                   : (
                     <ul>
                       {movieList.map((movie) => (
-                        
-                        <MovieCard key={movie.id} movie={movie}/>
+
+                        <MovieCard key={movie.id} movie={movie} />
                       ))}
                     </ul>
 
