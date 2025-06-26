@@ -1,14 +1,26 @@
-# React + Vite
+# Movie Explorer 🎬
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern movie search app built with React, using TMDB API for real-time movie data. This project was originally styled with Tailwind CSS and later migrated to custom CSS without losing the original design aesthetics.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Search for movies using TMDB API
+- Displays movie posters, ratings, language, and release year
+- Trending movie section based on search counts
+- Responsive UI
+- Loading spinner and error handling
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Live Demo
 
+👉 [View Live Project](https://movie-explorer-khaki-nine.vercel.app/)
 
+Replace the link above with your actual deployed Vercel/Netlify URL.
+
+## Tech Stack
+
+- React
+- JavaScript (ES6+)
+- TMDB API
+- CSS (custom utility classes, responsive design)
+- Appwrite (for tracking trending searches) 
