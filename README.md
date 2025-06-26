@@ -15,7 +15,6 @@ A modern movie search app built with React, using TMDB API for real-time movie d
 
 👉 [View Live Project](https://movie-explorer-khaki-nine.vercel.app/)
 
-Replace the link above with your actual deployed Vercel/Netlify URL.
 
 ## Tech Stack
 
