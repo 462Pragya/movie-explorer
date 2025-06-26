@@ -110,11 +110,11 @@ function App() {
             {trendingMovies.length > 0 && (
               <section className='trending'>
                 <h2 >Trending Movies</h2>
-                <ul>
-                  {trendingMovies.map((movie,index) => (
+                <ul className="hide-scrollbar">
+                  {trendingMovies.map((movie, index) => (
                     <li key={movie.$id}>
-                      <p>{index+1}</p>
-                    <img src={movie.poster_url} alt={movie.title}/>
+                      <p className="fancy-text">{index + 1}</p>
+                      <img src={movie.poster_url} alt={movie.title} />
 
                     </li>
                   ))}
@@ -127,9 +127,10 @@ function App() {
               {isLoading ?
                 (
                   <Spinner />
+
                 )
                 : errorMessage ?
-                  (<p className='text-red-500'>{errorMessage}</p>)
+                  (<p className='error-message'>{errorMessage}</p>)
 
                   : (
                     <ul>
@@ -142,6 +143,9 @@ function App() {
                   )}
 
             </section>
+            <footer className="footer">
+              <p>&copy; {new Date().getFullYear()} Movie Explorer. All rights reserved.</p>
+            </footer>
 
           </div>
         </div>
